@@ -1,0 +1,32 @@
+<div class="home-page">
+  <div class="home-panel">
+    <header>
+      <p class="brand">jwt-ui</p>
+      <h1>Profile</h1>
+      <p class="subtitle">Signed-in session from the JWT API.</p>
+    </header>
+
+    @if (loading()) {
+      <p class="status">Loading…</p>
+    } @else if (error()) {
+      <p class="status error">{{ error() }}</p>
+    } @else {
+      @if (user(); as profile) {
+        <dl class="profile">
+          <div>
+            <dt>Username</dt>
+            <dd>{{ profile.username }}</dd>
+          </div>
+          <div>
+            <dt>User ID</dt>
+            <dd class="mono">{{ profile.id }}</dd>
+          </div>
+        </dl>
+
+        <button type="button" class="logout" [disabled]="loggingOut()" (click)="logout()">
+          {{ loggingOut() ? 'Signing out…' : 'Log out' }}
+        </button>
+      }
+    }
+  </div>
+</div>

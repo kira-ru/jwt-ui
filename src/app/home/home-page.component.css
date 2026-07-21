@@ -1,0 +1,118 @@
+.home-page {
+  --ink: #1a1f1c;
+  --muted: #5c6660;
+  --line: #c9d0cb;
+  --surface: #f3f6f2;
+  --accent: #2f6b4f;
+  --accent-hover: #255a41;
+  --danger: #9b2c2c;
+
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, #d7e4db 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 80%, #e4ddd0 0%, transparent 50%),
+    linear-gradient(160deg, #eef2ee 0%, #e6ebe4 100%);
+  color: var(--ink);
+  font-family: "Segoe UI", "IBM Plex Sans", "Helvetica Neue", sans-serif;
+}
+
+.home-panel {
+  width: min(100%, 24rem);
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+.brand {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 650;
+}
+
+h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.75rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.profile {
+  margin: 0 0 1.25rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+}
+
+.profile div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+dt {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+dd {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 550;
+  word-break: break-all;
+}
+
+.mono {
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: 0.9rem;
+  font-weight: 450;
+}
+
+.status {
+  margin: 0;
+  color: var(--muted);
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.logout {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.logout:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent-hover);
+}
+
+.logout:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

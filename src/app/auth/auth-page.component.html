@@ -1,0 +1,68 @@
+<div class="auth-page">
+  <div class="auth-panel">
+    <header class="auth-header">
+      <p class="brand">jwt-ui</p>
+      <h1>{{ mode() === 'login' ? 'Sign in' : 'Create account' }}</h1>
+      <p class="subtitle">
+        {{ mode() === 'login' ? 'Enter your credentials to continue.' : 'Register a new username and password.' }}
+      </p>
+    </header>
+
+    <div class="mode-switch" role="tablist">
+      <button
+        type="button"
+        role="tab"
+        [attr.aria-selected]="mode() === 'login'"
+        [class.active]="mode() === 'login'"
+        (click)="setMode('login')"
+      >
+        Login
+      </button>
+      <button
+        type="button"
+        role="tab"
+        [attr.aria-selected]="mode() === 'register'"
+        [class.active]="mode() === 'register'"
+        (click)="setMode('register')"
+      >
+        Register
+      </button>
+    </div>
+
+    <form class="auth-form" [formGroup]="form" (ngSubmit)="submit()">
+      <label>
+        <span>Username</span>
+        <input
+          type="text"
+          formControlName="username"
+          autocomplete="username"
+          [attr.aria-invalid]="form.controls.username.touched && form.controls.username.invalid"
+        />
+        @if (form.controls.username.touched && form.controls.username.hasError('required')) {
+          <span class="field-error">Username is required</span>
+        }
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+          [attr.aria-invalid]="form.controls.password.touched && form.controls.password.invalid"
+        />
+        @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+          <span class="field-error">Password is required</span>
+        }
+      </label>
+
+      @if (error()) {
+        <p class="form-error" role="alert">{{ error() }}</p>
+      }
+
+      <button type="submit" class="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Please wait…' : mode() === 'login' ? 'Sign in' : 'Register' }}
+      </button>
+    </form>
+  </div>
+</div>
