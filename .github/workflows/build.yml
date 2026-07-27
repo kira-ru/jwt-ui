@@ -3,7 +3,7 @@ name: build docker image
 on:
   pull_request:
     branches:
-      - develop
+      - dev
 
 jobs:
   build:
