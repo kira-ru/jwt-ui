@@ -22,6 +22,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: deployment/Dockerfile
           push: true
           tags: ${{ github.repository }}:${{ github.sha }}
 
