@@ -31,10 +31,10 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/jwt-ui:${{ github.sha }}
             ${{ secrets.DOCKER_USERNAME }}/jwt-ui:latest
 
-      - name: Delete old images
-        uses: vscat/action-dockerhub-cleanup@v1.4.0
+      - name: Docker Hub Cleanup
+        uses: lostlink/docker-cleanup@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
-          repository: jwt-ui
-          keep-last: 2
+          repositories: ${{ secrets.DOCKER_USERNAME }}/jwt-ui
+          sha-retention: 2
