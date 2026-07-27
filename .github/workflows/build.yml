@@ -1,0 +1,17 @@
+name: build docker image
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t ${{ github.repository }}:${{ github.sha }} -f deployment/Dockerfile
+
